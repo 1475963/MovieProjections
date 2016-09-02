@@ -7,10 +7,10 @@ Classify movie projections and predict future projections
 * 3 (optional) - --debug, enables debug output (print things such as data intermiate states)
 
 # Best results
-Using extra trees regression:
-Best accuracy -> 41%
-Average accuracy -> 33%
-Worst accuracy -> 26%
+* Using extra trees regression:
+* Best accuracy -> 41%
+* Average accuracy -> 33%
+* Worst accuracy -> 26%
 
 # Future work
 Use discretisation to pre-classify NormalizedAttendance (really low, low, medium, high, really high).
