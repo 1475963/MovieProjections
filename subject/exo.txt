@@ -1,0 +1,32 @@
+Évolution de l’affluence aux séances d’un film
+
+Temps conseillé : 3 heures
+
+
+Lorsqu’un film sort dans un cinéma, celui-ci reste généralement plusieurs semaines à l’affiche. Cependant, au cours de sa durée d’exploitation, de moins en moins de monde vient assister aux séances de ce film.
+
+Pour observer l’évolution du succès d’un film en faisant abstraction des variations dues au jour et à l’horaire (les séances du samedi soir marchent mieux que celles du mardi matin), on introduit le concept d’”affluence normalisée”, qui est l’affluence à une séance divisée par un facteur dépendant du jour et de l’horaire. Si le samedi soir marche par exemple 2 fois mieux que les autres moments de la semaine, alors une séance le samedi soir ayant attiré 100 personnes aura une affluence normalisée de 50.
+
+On peut s’attendre à ce que les affluences normalisées décroissent au cours de l’exploitation d’un film.
+
+Énoncé
+
+Vous avez à votre disposition un fichier texte qui contient l’historique sur plusieurs années des affluences normalisées d’un cinéma. Chaque ligne représente une séance, avec les informations suivantes :
+l’identifiant du film,
+la date et l’horaire de la séance (format YYYY-MM-DD HH:MM:SS),
+l’affluence normalisée,
+séparées par des tabulations.
+
+Le fichier est disponible ici : https://www.dropbox.com/s/sd4j4udjebhaih1/data.txt 
+
+Votre objectif est de concevoir, en Python, un algorithme qui, étant donné l’historique des affluences normalisées d’un film, prédit l’affluence normalisée de sa prochaine séance.
+
+Conseils
+
+Vous pouvez utiliser ce que vous souhaitez pour accomplir cet exercice. À titre indicatif, vous pouvez utiliser une librairie comme scikit-learn pour l’apprentissage.
+
+Nous vous conseillons de découper les données en un ensemble d’apprentissage et en un ensemble de test.
+
+Évaluation
+
+Votre solution sera jugée à la fois sur la précision de l’algorithme, sur les idées mises en oeuvre  et sur la clarté du code.
