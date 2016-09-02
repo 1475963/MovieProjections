@@ -1,0 +1,9 @@
+Labels:  ['TheaterMovieId' 'ShowDatetime' 'NormalizedAttendance']
+Number of features:  3
+Number of instances:  25270
+Model used:  LinearRegression(copy_X=True, fit_intercept=True, n_jobs=1, normalize=False)
+Accuracy:  -5.17351463505e-05
+CV R^2 scores:  [  4.69684730e-05  -5.40916281e-03  -8.28866330e-03  -1.04813907e-03
+  -5.95467551e-03  -6.90677104e-03  -3.27773122e-03  -3.02826032e-02
+  -5.01577097e-03  -2.18328726e-03]
+CV R^2 scores average: -0.01 (+/- 0.02)

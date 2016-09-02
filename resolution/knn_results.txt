@@ -1,0 +1,10 @@
+Labels:  ['TheaterMovieId' 'ShowDatetime' 'NormalizedAttendance']
+Number of features:  3
+Number of instances:  25270
+Model used:  KNeighborsRegressor(algorithm='auto', leaf_size=30, metric='minkowski',
+          metric_params=None, n_jobs=1, n_neighbors=5, p=2,
+          weights='uniform')
+Accuracy:  -0.0348516378391
+CV R^2 scores:  [-0.12706583 -0.11497851 -0.13608055  0.01060965 -0.16176315 -0.16652619
+ -0.17412738 -0.13025102 -0.04564883 -0.02126286]
+CV R^2 scores average: -0.11 (+/- 0.12)

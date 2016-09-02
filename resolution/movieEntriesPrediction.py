@@ -9,7 +9,6 @@ from sklearn.metrics import classification_report
 from sklearn.metrics import accuracy_score
 from sklearn.externals.six import StringIO
 import pydotplus
-from IPython.display import Image, display
 import numpy as np
 import pandas as pd
 from datetime import datetime
@@ -22,7 +21,6 @@ KFOLDS = 10
 MODELS = {
     "dt": DecisionTreeRegressor(min_samples_leaf=8, max_depth=12),
     "et": ExtraTreesRegressor(n_estimators=15),
-    "nb": GaussianNB(),
     "knn": KNeighborsRegressor(),
     "lr": LinearRegression(),
     "svr": SVR()
@@ -30,13 +28,13 @@ MODELS = {
 
 def retrieveDataset(datafile: str):
     data = pd.read_csv(datafile, sep="\t")
-    print(data)
+    if DEBUG: print(data)
 
     return data
 
 def getDatasetInfo(data):
     featureLabels = data.columns.values
-    print(featureLabels)
+    print("Labels: ", featureLabels)
 
     nbFeatures = len(featureLabels)
     print("Number of features: ", nbFeatures)
@@ -48,35 +46,34 @@ def getDatasetInfo(data):
 
 def getVariablesAndTarget(data, featureLabels):
     X = data[featureLabels[:2]]
-    print("X:")
-    print(X.values)
-    print(len(X))
-
     Y = data[featureLabels[2]]
-    print("Y:")
-    print(Y.values)
-    print(len(Y))
+
+    if DEBUG:
+        print("X:")
+        print("Length: ", len(X))
+        print(X.values)
+        print("Y:")
+        print("Length: ", len(Y))
+        print(Y.values)
     
     return X, Y
 
 def trainTestSplit(X, Y, distribution):
     trainX, testX, trainY, testY = cv.train_test_split(X, Y, test_size=distribution)
 
-    print("Train set X: ")
-    print(trainX)
-    print(len(trainX))
-
-    print("Train set Y: ")
-    print(trainY)
-    print(len(trainY))
-
-    print("Test set X: ")
-    print(testX)
-    print(len(testX))
-
-    print("Test set Y: ")
-    print(testY)
-    print(len(testY))
+    if DEBUG:
+        print("Train set X: ")
+        print("Length: ", len(trainX))
+        print(trainX)
+        print("Train set Y: ")
+        print("Length: ", len(trainY))
+        print(trainY)
+        print("Test set X: ")
+        print("Length: ", len(testX))
+        print(testX)
+        print("Test set Y: ")
+        print("Length: ", len(testY))
+        print(testY)
 
     return trainX, testX, trainY, testY
 
@@ -97,7 +94,7 @@ def main(datafile: str, algorithm: str):
 
     #Date to timestamp pre-process for regression
     data[featureLabels[1]] = data[featureLabels[1]].apply(lambda x: datetime.strptime(x, "%Y-%m-%d %H:%M:%S").timestamp())
-    print(data)
+    if DEBUG: print(data)
 
     X, Y = getVariablesAndTarget(data, featureLabels)
     trainX, testX, trainY, testY = trainTestSplit(X, Y, 0.3)
@@ -106,12 +103,13 @@ def main(datafile: str, algorithm: str):
     print("Model used: ", clf)
     clf = clf.fit(trainX.values, trainY.values)
     predY = clf.predict(testX)
-    print(predY)
+    if DEBUG: print("Predicted values: ", predY)
     print("Accuracy: ", clf.score(testX.values, testY.values))
     cv_scores = cv.cross_val_score(clf, X.values, Y.values, cv=KFOLDS, scoring="r2")
     print("CV R^2 scores: ", cv_scores)
     print("CV R^2 scores average: {:.2f} (+/- {:.2f})".format(cv_scores.mean(), cv_scores.std() * 2))
-    print("Features importance: ", clf.feature_importances_)
+    if algorithm in ('et', 'dt'):
+        print("Features importance: ", clf.feature_importances_)
     """ need discretisation for the following """
 #    print(accuracy_score(testY, predY))
 #    print(classification_report(testY, predY, target_names=featureLabels[2]))

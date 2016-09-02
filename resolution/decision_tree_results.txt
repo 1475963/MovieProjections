@@ -1,0 +1,12 @@
+Labels:  ['TheaterMovieId' 'ShowDatetime' 'NormalizedAttendance']
+Number of features:  3
+Number of instances:  25270
+Model used:  DecisionTreeRegressor(criterion='mse', max_depth=12, max_features=None,
+           max_leaf_nodes=None, min_samples_leaf=8, min_samples_split=2,
+           min_weight_fraction_leaf=0.0, presort=False, random_state=None,
+           splitter='best')
+Accuracy:  0.281599837034
+CV R^2 scores:  [-0.45564525 -0.57059503 -0.60933675 -0.82853851 -0.4307067  -0.45191293
+ -0.34311978 -0.22035654 -0.15963699 -0.04530146]
+CV R^2 scores average: -0.41 (+/- 0.44)
+Features importance:  [ 0.43853257  0.56146743]
